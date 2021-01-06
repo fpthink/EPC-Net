@@ -1,0 +1,79 @@
+
+FOR_DEBUG: False
+
+MANUAL_SEED: 123
+# GPU_INDEX_TEACHER: 0
+GPU_INDEX_STUDENT: 0
+EVAL_GPU_INDEX: 1
+
+DATA_TYPE: "baseline"   # baseline or refine
+
+ARCH_TEACHER: "kd_epc-net"
+ARCH_STUDENT: "kd_epc-net-l"
+
+LOSS_TYPE: "square_error_sum"
+#LOSS_TYPE: "mse"
+#LOSS_TYPE: "cross_entropy_loss"
+TEMPERATURE: 1
+BETA: 1.0       # for quadruplet loss
+ALPHA: 0.1      # for soft label
+GAMMA: 0.0      # for feature
+
+GLOBAL_FEAT: True
+FEATURE_TRANSFORM: True
+MAX_POOL: False
+
+GROUPS: 4
+
+# GLOBAL
+NUM_POINTS: 4096
+INPUT_DIM: 3
+CLUSTER_SIZE: 64
+NSAMPLE: 1024
+FEATURE_OUTPUT_DIM: 256
+KNN: 20
+
+
+DATASET_FOLDER: '/test/dataset/benchmark_datasets/'
+
+POSITIVES_PER_QUERY: 2
+NEGATIVES_PER_QUERY: 14
+
+# TRAIN
+BATCH_NUM_QUERIES: 1
+TRAIN_POSITIVES_PER_QUERY: 2
+TRAIN_NEGATIVES_PER_QUERY: 14
+
+DECAY_STEP: 200000
+DECAY_RATE: 0.7
+#BASE_LEARNING_RATE: 0.000005
+#BASE_LEARNING_RATE: 0.00005
+#BASE_LEARNING_RATE: 0.00001
+BASE_LEARNING_RATE: 0.001
+MOMENTUM: 0.9
+OPTIMIZER: 'adam'
+MAX_EPOCH: 50
+
+MARGIN_1: 0.5
+MARGIN_2: 0.2
+
+BN_INIT_DECAY: 0.5
+BN_DECAY_DECAY_RATE: 0.5
+BN_DECAY_CLIP: 0.99
+
+TRAIN_FILE_ROOT: '/test/work2020/pointnetvlad/generating_queries/pickle_data'
+TEST_FILE_ROOT: '/test/work2020/pointnetvlad/generating_queries/pickle_data'
+
+# LOSS
+LOSS_FUNCTION: 'quadruplet'
+LOSS_LAZY: True
+TRIPLET_USE_BEST_POSITIVES: False
+LOSS_IGNORE_ZERO_BATCH: False
+
+# EVAL6
+EVAL_BATCH_SIZE: 1
+EVAL_POSITIVES_PER_QUERY: 4
+EVAL_NEGATIVES_PER_QUERY: 10
+
+EVAL_DATABASE_FILE: '/test/work2020/pointnetvlad/generating_queries/pickle_data/oxford_evaluation_database.pickle'
+EVAL_QUERY_FILE: '/test/work2020/pointnetvlad/generating_queries/pickle_data/oxford_evaluation_query.pickle'
